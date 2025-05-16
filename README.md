@@ -12,26 +12,15 @@ The game speeds up as you play, making every rally more thrilling! ⚡
 
 ---
 
-## 🎯 Features
+## ✨ Features
 
-- **Smooth and responsive controls**  
-  Player 1: `W` (up) / `S` (down)  
-  Player 2: `UP` / `DOWN` arrow keys
+- 🕹️ **Smooth & responsive controls** — Player 1 uses `W`/`S`, Player 2 uses `⬆️`/`⬇️`.  
+- 🤖 **CPU Mode** — Press `C` to challenge a smart AI opponent for solo matches.  
+- ⚡ **Dynamic ball speed** — The ball accelerates with each paddle hit, pushing your reflexes to the limit!  
+- 🔊 **Retro sound effects** — Classic bounce and score sounds bring that nostalgic arcade feeling.  
+- 🌈 **Neon arcade-style UI** — Glowing center line, paddle-displayed scores, and a vibrant, retro look.  
+- 🏁 **Game Over & Restart** — First to 5 points wins! Press `R` to restart anytime.
 
-- **CPU Mode** 🧠  
-  Press `C` to enable CPU opponent for single-player fun!
-
-- **Dynamic ball speed** ⚡  
-  Ball velocity increases with every racket hit, testing your reflexes!
-
-- **Sound effects** 🔊  
-  Bounce and score sounds enhance the immersive experience!
-
-- **Clean and simple UI**  
-  Minimalist design focused on gameplay, with scores displayed on the rackets.
-
-- **Game Over & Restart**  
-  First to 5 points wins! Press `R` to restart anytime.
 
 ---
 
