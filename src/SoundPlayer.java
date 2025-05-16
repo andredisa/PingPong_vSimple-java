@@ -1,19 +1,40 @@
-import java.io.File;
 import javax.sound.sampled.*;
 
 public class SoundPlayer {
-public static void playSound(String path) {
-    new Thread(() -> {
+
+    private static Clip bounceClip;
+    private static Clip scoreClip;
+
+    static {
         try {
-            File file = new File(path);
-            AudioInputStream audio = AudioSystem.getAudioInputStream(file);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audio);
-            clip.start();
+            bounceClip = AudioSystem.getClip();
+            AudioInputStream bounceAudio = AudioSystem.getAudioInputStream(
+                SoundPlayer.class.getResourceAsStream("/sounds/bounce.wav"));
+            bounceClip.open(bounceAudio);
+
+            scoreClip = AudioSystem.getClip();
+            AudioInputStream scoreAudio = AudioSystem.getAudioInputStream(
+                SoundPlayer.class.getResourceAsStream("/sounds/score.wav"));
+            scoreClip.open(scoreAudio);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }).start();
-}
+    }
 
+    public static void playBounce() {
+        if (bounceClip.isRunning()) {
+            bounceClip.stop();  // ferma se sta ancora suonando
+        }
+        bounceClip.setFramePosition(0); // torna all'inizio
+        bounceClip.start();
+    }
+
+    public static void playScore() {
+        if (scoreClip.isRunning()) {
+            scoreClip.stop();
+        }
+        scoreClip.setFramePosition(0);
+        scoreClip.start();
+    }
 }
