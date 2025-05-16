@@ -124,7 +124,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
             int offset = b.getY() - (r1.y + 40);
             b.yVel = offset / 5;
             b.increaseSpeed(); // <-- aggiungi qui
-            SoundPlayer.playSound("bounce.wav");
+            SoundPlayer.playBounce();
         }
 
         if (b.getX() > 660 && r2.y < b.getY() && r2.y + 80 > b.getY()) {
@@ -132,19 +132,19 @@ public class Main extends JPanel implements ActionListener, KeyListener {
             int offset = b.getY() - (r2.y + 40);
             b.yVel = offset / 5;
             b.increaseSpeed(); // <-- e qui
-            SoundPlayer.playSound("bounce.wav");
+            SoundPlayer.playBounce();
         }
     }
 
     private void checkWin() {
         if (b.getX() < 30) {
             r2.score++;
-            SoundPlayer.playSound("score.wav");
+            SoundPlayer.playScore();
             checkWinner();
             b = new Ball();
         } else if (b.getX() > 675) {
             r1.score++;
-            SoundPlayer.playSound("score.wav");
+            SoundPlayer.playScore();
             checkWinner();
             b = new Ball();
         }
