@@ -16,13 +16,22 @@ public class Racket {
         y = 250;
     }
 
-    public void paint(Graphics g) {
-        g.setColor(Color.pink);
-        g.fillRect(x, y, w, h);
-        g.setColor(Color.white);
-        g.setFont(new Font("default", Font.PLAIN, 20));
-        g.drawString(score + "", x + 5, y + 45);
+ public void paint(Graphics g) {
+    // Colori diversi per i due giocatori
+    if (player == 1) {
+        g.setColor(Color.BLUE); // Giocatore 1
+    } else {
+        g.setColor(Color.ORANGE); // Giocatore 2
     }
+
+    g.fillRect(x, y, w, h);
+
+    // Punteggio
+    g.setColor(Color.WHITE);
+    g.setFont(new Font("default", Font.PLAIN, 20));
+    g.drawString(score + "", x + 5, y + 45);
+}
+
 
     public void setAccel(int direction) {
         int newY = y + (direction * 4);
@@ -35,7 +44,17 @@ public class Racket {
         }
     }
 
-    public void cpuMode(Ball b) {
-        y = b.getY() - 40;
+public void cpuMode(Ball b) {
+    int targetY = b.getY() - 40;
+    int errorMargin = 10 + rand.nextInt(15); // errore casuale tra 10 e 25 pixel
+
+    if (Math.abs(y - targetY) > errorMargin) {
+        if (y < targetY) {
+            y += 2; // velocità ridotta
+        } else {
+            y -= 2;
+        }
     }
+}
+
 }
