@@ -39,27 +39,55 @@ public class Main extends JPanel implements ActionListener, KeyListener {
     public void paint(Graphics g) {
         super.paint(g);
 
+        // Sfondo campo
+        g.setColor(new Color(10, 10, 30)); // blu scuro stile arcade
+        g.fillRect(0, 0, getWidth(), getHeight());
+
+        // Cornice del campo
+        g.setColor(Color.CYAN);
+        g.drawRect(35, 20, 634, 430);
+
+        // Linea centrale tratteggiata
+        g.setColor(Color.WHITE);
+        for (int i = 30; i < 450; i += 30) {
+            g.fillRect(352, i, 4, 15);
+        }
+
+        // Titolo neon sopra
+        g.setFont(new Font("Monospaced", Font.BOLD, 24));
+        g.setColor(new Color(255, 0, 255));
+        g.drawString("🏓 Ping Pong Neo Arcade 🕹️", 200, 50);
+
+        // Punteggio
+        g.setFont(new Font("Monospaced", Font.BOLD, 18));
+        g.setColor(Color.GREEN);
+        g.drawString("Player 1: " + r1.score, 50, 480);
+        g.setColor(Color.ORANGE);
+        g.drawString("Player 2: " + r2.score, 540, 480);
+
+        // Istruzioni
+        g.setColor(Color.LIGHT_GRAY);
+        g.setFont(new Font("default", Font.PLAIN, 18));
+        g.drawString("[Player 1: W/S]  [Player 2: ↑/↓]  [CPU Mode: C]", 180, 510);
+
+        // Menu iniziale
         if (showMenu) {
-            g.setColor(Color.BLACK);
-            g.setFont(new Font("default", Font.BOLD, 32));
-            g.drawString("Ping Pong Game", 240, 200);
-            g.setFont(new Font("default", Font.PLAIN, 20));
-            g.drawString("Press ENTER to Start", 260, 250);
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Monospaced", Font.BOLD, 32));
+            g.drawString("Press ENTER to Start", 190, 250);
             return;
         }
 
-        g.drawRect(35, 0, 634, 450);
+        // Disegno oggetti di gioco
         b.paint(g);
         r1.paint(g);
         r2.paint(g);
 
-        g.setColor(Color.black);
-        g.drawString("[Player 1: W/S] [Player 2: Up/Down] [CPU Mode: C]", 200, 500);
-
+        // Schermata Game Over
         if (gameOver) {
             g.setColor(Color.RED);
             g.setFont(new Font("default", Font.BOLD, 36));
-            g.drawString(winner, 240, 225);
+            g.drawString(winner, 230, 225);
             g.setFont(new Font("default", Font.PLAIN, 20));
             g.drawString("Press R to Restart", 260, 260);
         }
@@ -72,7 +100,7 @@ public class Main extends JPanel implements ActionListener, KeyListener {
             checkCollision();
             checkWin();
             if (setCpuMode) {
-                r1.cpuMode(b);
+                r2.cpuMode(b);
             }
             repaint();
         }
@@ -81,10 +109,12 @@ public class Main extends JPanel implements ActionListener, KeyListener {
             r1.setAccel(-1);
         if (sPressed)
             r1.setAccel(1);
-        if (upPressed)
-            r2.setAccel(-1);
-        if (downPressed)
-            r2.setAccel(1);
+        if (!setCpuMode) {
+            if (upPressed)
+                r2.setAccel(-1);
+            if (downPressed)
+                r2.setAccel(1);
+        }
 
     }
 
