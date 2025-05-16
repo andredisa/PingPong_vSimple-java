@@ -6,7 +6,7 @@ public class Ball {
 
     int xVel, yVel;
     int x, y;
-    private final int MAX_SPEED = 8;  // limite velocità
+    private final int MAX_SPEED = 8; // limite velocità
 
     public Ball() {
         x = 350;
@@ -23,8 +23,6 @@ public class Ball {
     public void move() {
         x += xVel;
         y += yVel;
-        SoundPlayer.playSound("bounce.wav");
-
         if (y < 10 || y > 440) {
             yVel = -yVel;
         }
