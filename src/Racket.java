@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import java.util.Random;
 
 public class Racket {
+                                              // | ===== PLAYER RACKET SPEED =====          
+    private static final int MOVE_SPEED = 4;  // | Change this value to increase or decrease the speed of the player's racket.
+                                              // | Higher values = faster movement | Lower values = slower movement
     int x, y;
     int w = 20, h = 80;
     int player;
@@ -16,25 +19,24 @@ public class Racket {
         y = 250;
     }
 
- public void paint(Graphics g) {
-    // Colori diversi per i due giocatori
-    if (player == 1) {
-        g.setColor(Color.BLUE); // Giocatore 1
-    } else {
-        g.setColor(Color.ORANGE); // Giocatore 2
+    public void paint(Graphics g) {
+        // Colori diversi per i due giocatori
+        if (player == 1) {
+            g.setColor(Color.BLUE); // Giocatore 1
+        } else {
+            g.setColor(Color.ORANGE); // Giocatore 2
+        }
+
+        g.fillRect(x, y, w, h);
+
+        // Punteggio
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("default", Font.PLAIN, 20));
+        g.drawString(score + "", x + 5, y + 45);
     }
 
-    g.fillRect(x, y, w, h);
-
-    // Punteggio
-    g.setColor(Color.WHITE);
-    g.setFont(new Font("default", Font.PLAIN, 20));
-    g.drawString(score + "", x + 5, y + 45);
-}
-
-
     public void setAccel(int direction) {
-        int newY = y + (direction * 4);
+        int newY = y + (direction * MOVE_SPEED);
         if (newY > 370) { // limiti più coerenti
             y = 370;
         } else if (newY < 10) {
@@ -44,17 +46,17 @@ public class Racket {
         }
     }
 
-public void cpuMode(Ball b) {
-    int targetY = b.getY() - 40;
-    int errorMargin = 10 + rand.nextInt(15); // errore casuale tra 10 e 25 pixel
+    public void cpuMode(Ball b) {
+        int targetY = b.getY() - 40;
+        int errorMargin = 10 + rand.nextInt(15); // errore casuale tra 10 e 25 pixel
 
-    if (Math.abs(y - targetY) > errorMargin) {
-        if (y < targetY) {
-            y += 2; // velocità ridotta
-        } else {
-            y -= 2;
+        if (Math.abs(y - targetY) > errorMargin) {
+            if (y < targetY) {
+                y += 2; // velocità ridotta
+            } else {
+                y -= 2;
+            }
         }
     }
-}
 
 }
