@@ -16,7 +16,7 @@ public class Ball {
     }
 
     public void paint(Graphics g) {
-        g.setColor(Color.black);
+        g.setColor(Color.white);
         g.fillOval(x - 10, y - 10, 20, 20);
     }
 
