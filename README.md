@@ -91,17 +91,17 @@ java Main
 ## 📂 Project Structure
 ```plaintext
 PingPong_vSimple-java/
-├── src/                    # 💻 Source code files
+├── src/             # 💻 Source code files
 │   ├── Main.java           # 🎮 Main game loop and rendering
 │   ├── Ball.java           # 🎾 Ball logic and movement
 │   ├── Racket.java         # 🏓 Player and CPU paddles
 │   └── SoundPlayer.java    # 🔊 Sound effects handler
-├── sounds/                 # 🎵 Audio files for game effects
+├── sounds/         # 🎵 Audio files for game effects
 │   ├── bounce.wav          # 🔔 Bounce sound effect
 │   └── score.wav           # 🥳 Score sound effect
 |
-├── README.md               # 📖 Project documentation and instructions
-└── LICENSE                 # 📜 License information
+├── README.md       # 📖 Project documentation and instructions
+└── LICENSE         # 📜 License information
 
 ```
 
